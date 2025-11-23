@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Notes Dashboard</h2>
+        <button onclick="logout()">Logout</button>
+
+        <h3>Create a new note</h3>
+        <form id="noteForm">
+            <input type="text" id="noteTitle" placeholder="Title" required>
+            <textarea id="noteContent" placeholder="Content" required></textarea>
+            <button type="submit">Add Note</button>
+        </form>
+
+        <h3>Filter Notes by Date</h3>
+        <input type="date" id="filterDate">
+        <button onclick="filterNotes()">Filter</button>
+        <button onclick="loadNotes()">Clear Filter</button>
+
+        <h3>All Notes</h3>
+        <div id="notesList"></div>
+
+        <!-- Edit Modal -->
+        <div id="editModal" style="display:none; padding:10px; border:1px solid #333; background:#f9f9f9; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);">
+            <h3>Edit Note</h3>
+            <input type="text" id="editTitle" placeholder="Title">
+            <textarea id="editContent" placeholder="Content"></textarea>
+            <button onclick="saveEdit()">Save</button>
+            <button onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
