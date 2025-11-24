@@ -115,4 +115,25 @@ def update_note(note_id: int, note: NoteUpdate):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.delete
+@router.delete("/{note_id}")
+def delete_note(note_id: int):
+    if supabase is None:
+        raise HTTPException(500, "Supabase not configured")
+
+    try:
+        result = (
+            supabase
+            .table("notes")
+            .delete()
+            .eq("id", note_id)
+            .execute()
+        )
+
+        if not result.data:
+            raise HTTPException(404, "Note not found")
+
+        return {"message": "Note deleted"}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
