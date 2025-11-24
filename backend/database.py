@@ -5,6 +5,9 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
+print("🔥 database.py STARTED")
+
+
 # Get the directory of this file
 BASE_DIR = Path(__file__).resolve().parent
 
